@@ -9,7 +9,15 @@ import FilterBar from '@/components/FilterBar'
 import Link from 'next/link'
 
 export default function Dashboard() {
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState<Array<{
+    id: string
+    title: string
+    content: string
+    type: 'note' | 'link' | 'insight'
+    summary?: string
+    tags?: Array<{ name: string; is_ai_generated: boolean }>
+    created_at: string
+  }>>([])
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [filters, setFilters] = useState({ type: '', search: '' })
   const [isLoading, setIsLoading] = useState(true)
@@ -102,7 +110,7 @@ export default function Dashboard() {
 
         {/* Items Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-          {items.map((item: any) => (
+          {items.map((item) => (
             <div key={item.id}>
               <ItemCard item={item} onUpdate={fetchItems} />
             </div>

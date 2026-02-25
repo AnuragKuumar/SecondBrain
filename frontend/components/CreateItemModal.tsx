@@ -4,7 +4,13 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { createItem } from '@/lib/api'
 
-export default function CreateItemModal({ isOpen, onClose, onSuccess }: any) {
+interface CreateItemModalProps {
+  isOpen: boolean
+  onClose: () => void
+  onSuccess: () => void
+}
+
+export default function CreateItemModal({ isOpen, onClose, onSuccess }: CreateItemModalProps) {
   const [formData, setFormData] = useState({
     title: '',
     content: '',

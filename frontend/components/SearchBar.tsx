@@ -3,7 +3,12 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-export default function SearchBar({ value, onChange }: any) {
+interface SearchBarProps {
+  value: string
+  onChange: (value: string) => void
+}
+
+export default function SearchBar({ value, onChange }: SearchBarProps) {
   const [localValue, setLocalValue] = useState(value)
   const [isFocused, setIsFocused] = useState(false)
 

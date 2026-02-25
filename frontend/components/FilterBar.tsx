@@ -1,6 +1,14 @@
 'use client'
 
-export default function FilterBar({ filters, onChange }: any) {
+interface FilterBarProps {
+  filters: {
+    type: string
+    search: string
+  }
+  onChange: (filters: { type: string; search: string }) => void
+}
+
+export default function FilterBar({ filters, onChange }: FilterBarProps) {
   const types = [
     { value: 'all', label: 'All', icon: '📚', gradient: 'from-gray-500 to-gray-600' },
     { value: 'note', label: 'Notes', icon: '📝', gradient: 'from-blue-500 to-cyan-500' },

@@ -3,7 +3,20 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-export default function ItemCard({ item, onUpdate }: any) {
+interface ItemCardProps {
+  item: {
+    id: string
+    title: string
+    content: string
+    type: 'note' | 'link' | 'insight'
+    summary?: string
+    tags?: Array<{ name: string; is_ai_generated: boolean }>
+    created_at: string
+  }
+  onUpdate: () => void
+}
+
+export default function ItemCard({ item, onUpdate }: ItemCardProps) {
   const typeColors = {
     note: { bg: 'from-blue-500 to-cyan-500', text: 'text-blue-700', icon: '📝' },
     link: { bg: 'from-green-500 to-emerald-500', text: 'text-green-700', icon: '🔗' },
